@@ -1,0 +1,17 @@
+{
+  "name": "raspianclient",
+  "version": "1.0.0",
+  "description": "raspberry pi websocket client",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "bhargav",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "gpio": "^0.2.7",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.4.8"
+  }
+}
