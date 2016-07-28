@@ -1,6 +1,7 @@
 var gpio = require("gpio");
 var io = require('socket.io-client');
 var serverUrl = 'http://159.203.161.191:8090';
+//var serverUrl = 'http://localhost:8090/';
 var conn = io.connect(serverUrl);
 
 var turnLightOn = function(pinNumber){
@@ -14,13 +15,9 @@ var turnLightOn = function(pinNumber){
     });
   }
 
-conn.emit('join', '{"userID" : "raspberry"}');
+conn.emit('register', '{"userID" : "raspberry"}');
 
-conn.on('response',function(data){
-  console.log(data);
-});
-
-conn.on('rasp-message',function(msg){
+conn.on('response',function(msg){
   console.log(msg);
 
   if(msg.indexOf('green') > -1){
@@ -31,8 +28,4 @@ conn.on('rasp-message',function(msg){
   	turnLightOn(16);
   }
 
-  /*if(msg.indexOf('both') > -1){
-    turnLightOn(16);
-  	turnLightOn(18);
-  }*/
 });
